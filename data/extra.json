@@ -1,0 +1,4 @@
+{
+  "_note": "Offres ajoutées à la main ou par la recherche web du matin (LinkedIn, Welcome to the Jungle, Indeed, cabinets de conseil…). Champs : titre, entreprise, lieu, zone (Paris|France|Europe|Afrique|Amérique du Nord|Télétravail), type (Startup|Conseil|Fonds), contrat, publie (AAAA-MM-JJ), url, postuler, source, extrait, francais (true/false). Facultatif : score (0-99) et raisons (liste) pour imposer un classement. Retire les offres de plus de 45 jours.",
+  "offres": []
+}

@@ -1,0 +1,40 @@
+{
+  "nom": "Elliot Dumas",
+  "resume": "Consultant en stratégie. Cherche un poste d'Associate / Founder's Associate / Chief of Staff / Strategy & Ops, de préférence en startup. Zones : Paris, Europe, Afrique ; États-Unis ou Canada seulement si le poste demande le français.",
+  "a_completer": "Ajoute ici ton parcours (écoles, cabinets, années d'expérience, secteurs) pour affiner le classement.",
+  "titres": {
+    "forts": [
+      "founder's associate", "founders associate", "founders' associate", "founder associate",
+      "chief of staff", "bras droit", "ceo office", "office of the ceo", "ceo's office",
+      "strategy associate", "strategy & operations", "strategy and operations", "strategy & ops",
+      "strat & ops", "strategy/operations", "bizops", "biz ops", "business operations",
+      "corporate development", "corp dev", "corpdev", "strategic projects", "special projects",
+      "strategy manager", "strategy lead", "head of strategy", "strategy director",
+      "consultant en stratégie", "consultante en stratégie", "strategy consultant",
+      "chargé de mission stratégie", "chargée de mission stratégie", "chargé de stratégie"
+    ],
+    "moyens": [
+      "associate", "strategy", "stratégie", "strategic", "investment", "venture", "m&a",
+      "general manager", "country manager", "expansion", "launch", "city lead",
+      "operations manager", "head of operations", "chargé de mission", "chargée de mission",
+      "transformation", "pricing", "partnerships", "business development", "growth",
+      "program manager", "programme manager", "product operations", "revenue operations"
+    ],
+    "exclus": [
+      "engineer", "engineering", "developer", "développeur", "developpeur", "ingénieur", "ingenieur",
+      "software", "data scientist", "data engineer", "machine learning", "designer", "ux ", "ui ",
+      "sales development", "sdr", "bdr", "account executive", "account manager", "customer success",
+      "support", "accountant", "comptable", "payroll", "legal counsel", "lawyer", "juriste",
+      "recruiter", "recruitment", "talent acquisition", "nurse", "infirmier", "médecin", "doctor",
+      "technician", "technicien", "copywriter", "content", "community manager", "warehouse",
+      "driver", "chauffeur", "rider", "courier", "security", "sécurité", "devops", "sre",
+      "frontend", "backend", "full stack", "fullstack", "qa ", "tester", "it ", "help desk",
+      "sales associate", "store", "cashier", "partner manager", "marketing manager",
+      "compliance", "risk", "fraud", "financial crime", "kyc", "aml", "legal", "communications",
+      "human resources", "human ressources", "hr", "people partner", "data analyst", "analytics engineer",
+      "product manager", "product owner", "representative", "workforce", "capacity planning", "procurement"
+    ]
+  },
+  "stages": ["intern", "internship", "stage", "stagiaire", "alternance", "alternant", "apprenti", "apprentice", "working student", "werkstudent", "trainee", "graduate programme", "vie ", "v.i.e"],
+  "trop_senior": ["vp ", "vice president", "director", "directeur", "directrice", "head of", "chief operating", "coo", "cfo", "cto", "principal"]
+}

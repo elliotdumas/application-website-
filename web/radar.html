@@ -1,0 +1,494 @@
+<title>Radar Carrière</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Les offres Strategy, Chief of Staff et Founder's Associate du moment, classées pour le profil d'Elliot Dumas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : une liste classée façon « deal sheet » à gauche, un volet de lecture fixe à droite. */
+:root {
+  --bg: #F3F4F6;
+  --surface: #FFFFFF;
+  --raised: #FAFBFC;
+  --ink: #131722;
+  --muted: #5E6576;
+  --faint: #8A909E;
+  --line: #E1E4EA;
+  --accent: #1C5C49;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E2EEE9;
+  --gold: #94742A;
+  --gold-soft: #F4EEDD;
+  --warn: #9A4A1E;
+  --shadow: 0 1px 2px rgba(19,23,34,.04), 0 8px 24px rgba(19,23,34,.06);
+
+  --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --r: 10px;
+  --step--1: .8125rem;
+  --step-0: .9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: 2rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1015; --surface: #141921; --raised: #181E27; --ink: #E7EAF0; --muted: #9AA1AF; --faint: #6E7584;
+    --line: #242B36; --accent: #63C3A2; --accent-ink: #0B1712; --accent-soft: #15302A; --gold: #D5B467; --gold-soft: #2C2614;
+    --warn: #E39A6E; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1015; --surface: #141921; --raised: #181E27; --ink: #E7EAF0; --muted: #9AA1AF; --faint: #6E7584;
+  --line: #242B36; --accent: #63C3A2; --accent-ink: #0B1712; --accent-soft: #15302A; --gold: #D5B467; --gold-soft: #2C2614;
+  --warn: #E39A6E; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 var(--step-0)/1.5 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.wrap {
+  max-width: 1320px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- en-tête */
+header.top { padding-block: 28px 18px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; }
+.brand { display: grid; gap: 2px; }
+.brand h1 { margin: 0; font: 400 var(--step-3)/1 var(--f-display); letter-spacing: -.01em; }
+.brand h1 em { font-style: italic; color: var(--accent); }
+.brand p { margin: 0; color: var(--muted); font-size: var(--step--1); }
+.stamp { color: var(--muted); font-size: var(--step--1); text-align: right; display: grid; gap: 2px; }
+.stamp b { color: var(--ink); font-weight: 500; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); overflow: hidden; }
+.stat { all: unset; cursor: pointer; padding: 14px 18px; display: grid; gap: 2px; border-right: 1px solid var(--line); transition: background .15s; }
+.stat:last-child { border-right: 0; }
+.stat:hover { background: var(--raised); }
+.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.stat .n { font: 500 1.5rem/1.1 var(--f-mono); font-variant-numeric: tabular-nums; }
+.stat .l { font-size: var(--step--1); color: var(--muted); }
+.stat[aria-pressed="true"] { background: var(--accent-soft); }
+.stat[aria-pressed="true"] .n { color: var(--accent); }
+
+/* ---------- barre de filtres */
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; border-bottom: 1px solid var(--line); }
+.search { flex: 1 1 260px; min-width: 0; position: relative; }
+.search input { width: 100%; height: 40px; padding: 0 12px 0 36px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.search input::placeholder { color: var(--faint); }
+.search svg { position: absolute; left: 12px; top: 12px; width: 16px; height: 16px; stroke: var(--faint); fill: none; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg button { border: 0; background: none; padding: 5px 10px; border-radius: 6px; font-size: var(--step--1); color: var(--muted); cursor: pointer; white-space: nowrap; }
+.seg button:hover { color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.check { display: inline-flex; align-items: center; gap: 8px; font-size: var(--step--1); color: var(--muted); cursor: pointer; user-select: none; }
+.check input { accent-color: var(--accent); width: 15px; height: 15px; }
+.tabs { display: flex; gap: 22px; padding-top: 16px; overflow-x: auto; }
+.tabs button { border: 0; background: none; padding: 0 0 10px; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; font-weight: 500; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--ink); }
+.tabs .c { font: 400 var(--step--1) var(--f-mono); color: var(--faint); margin-left: 4px; }
+
+/* ---------- corps */
+.main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 24px; padding-block: 18px 48px; align-items: start; }
+.list { display: grid; gap: 8px; min-width: 0; }
+.row {
+  all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 30px 52px minmax(0, 1fr); gap: 14px; align-items: center;
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.row:hover { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.row:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.row[aria-current="true"] { border-color: var(--accent); box-shadow: var(--shadow); }
+.row.is-applied { opacity: .62; }
+.rank { font: 400 var(--step--1) var(--f-mono); color: var(--faint); text-align: right; }
+.score { display: grid; gap: 5px; justify-items: start; }
+.score b { font: 500 1.125rem/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+.score i { display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.score i::after { content: ""; display: block; height: 100%; width: var(--w); background: var(--bar, var(--muted)); }
+.tier-a { --bar: var(--gold); } .tier-a b { color: var(--gold); }
+.tier-b { --bar: var(--accent); } .tier-b b { color: var(--accent); }
+.r-body { min-width: 0; display: grid; gap: 3px; }
+.r-title { font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.r-meta { color: var(--muted); font-size: var(--step--1); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.r-meta span + span::before { content: "·"; margin-right: 10px; color: var(--faint); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { font-size: .72rem; letter-spacing: .02em; padding: 2px 8px; border-radius: 999px; background: var(--raised); border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.chip.new { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+.chip.stage { color: var(--warn); }
+.chip.st { background: var(--ink); color: var(--bg); border-color: transparent; }
+.more { justify-self: center; margin-top: 8px; }
+
+/* ---------- volet de détail */
+.pane { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); max-height: calc(100vh - 110px); overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; }
+.pane-in { padding: 28px 30px 30px; display: grid; gap: 22px; }
+.p-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; color: var(--muted); font-size: var(--step--1); }
+.p-score { display: inline-flex; align-items: baseline; gap: 6px; padding: 4px 10px; border-radius: 999px; background: var(--raised); border: 1px solid var(--line); }
+.p-score b { font: 500 1rem var(--f-mono); }
+.p-score.tier-a { background: var(--gold-soft); border-color: transparent; } .p-score.tier-a b { color: var(--gold); }
+.p-score.tier-b { background: var(--accent-soft); border-color: transparent; } .p-score.tier-b b { color: var(--accent); }
+.pane h2 { margin: 0; font: 400 var(--step-3)/1.12 var(--f-display); letter-spacing: -.01em; text-wrap: balance; overflow-wrap: anywhere; }
+.p-co { margin: 6px 0 0; font-size: var(--step-1); color: var(--muted); }
+.p-co b { color: var(--ink); font-weight: 600; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 0; }
+.facts div { background: var(--surface); padding: 10px 14px; min-width: 0; }
+.facts dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
+.facts dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; cursor: pointer; font-weight: 500; white-space: nowrap; transition: background .15s, border-color .15s; }
+.btn:hover { background: var(--raised); border-color: var(--faint); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); background: var(--accent); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+.ask { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 14px; border-radius: var(--r); background: var(--accent-soft); color: var(--ink); font-size: var(--step--1); }
+.ask .btn { height: 32px; padding: 0 12px; font-size: var(--step--1); }
+.p-sec h3 { margin: 0 0 10px; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); font-weight: 600; }
+.why { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.why li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+.why li::before { content: ""; width: 6px; height: 6px; margin: 8px 0 0 4px; border-radius: 50%; background: var(--accent); }
+.why li.neg::before { background: var(--warn); }
+.excerpt { margin: 0; color: var(--muted); max-width: 65ch; white-space: pre-line; overflow-wrap: anywhere; }
+textarea { width: 100%; min-height: 72px; resize: vertical; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--raised); font: inherit; color: inherit; }
+.close { display: none; }
+.empty { padding: 48px 24px; text-align: center; color: var(--muted); display: grid; gap: 8px; justify-items: center; }
+.empty h3 { margin: 0; font: 400 var(--step-2) var(--f-display); color: var(--ink); }
+.empty .btn { margin-top: 6px; }
+
+/* ---------- autres sites */
+.elsewhere { border-top: 1px solid var(--line); padding-block: 32px 56px; display: grid; gap: 16px; }
+.elsewhere h2 { margin: 0; font: 400 var(--step-2) var(--f-display); }
+.elsewhere p { margin: 0; color: var(--muted); max-width: 70ch; }
+.links { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.links a { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); text-decoration: none; transition: border-color .15s; min-width: 0; }
+.links a:hover { border-color: var(--accent); }
+.links b { font-weight: 600; }
+.links span { font-size: var(--step--1); color: var(--muted); }
+.foot { color: var(--faint); font-size: var(--step--1); padding-bottom: 32px; }
+.kbd { font: .72rem var(--f-mono); padding: 1px 5px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+
+@media (max-width: 980px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .pane { position: fixed; inset: 0; top: 0; max-height: none; border-radius: 0; border: 0; z-index: 20; display: none;
+          padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+          padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); }
+  .pane.open { display: block; }
+  .pane-in { padding: 20px 18px 40px; }
+  .close { display: inline-flex; justify-self: start; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .stamp { text-align: left; }
+  .kb-hint { display: none; }
+  .toolbar { position: static; }
+}
+@media (max-width: 520px) {
+  .row { grid-template-columns: 44px minmax(0, 1fr); }
+  .rank { display: none; }
+  .pane h2 { font-size: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Radar <em>Carrière</em></h1>
+      <p>Strategy · Chief of Staff · Founder's Associate, en startup en priorité. Paris, Europe, Afrique.</p>
+    </div>
+    <div class="stamp" id="stamp"></div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar" role="search">
+    <label class="search">
+      <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <input id="q" type="search" placeholder="Rechercher un poste, une entreprise, une ville…" aria-label="Rechercher">
+    </label>
+    <div class="seg" id="period" aria-label="Période de publication"></div>
+    <div class="seg" id="zones" aria-label="Zone"></div>
+    <div class="seg" id="sort" aria-label="Tri"></div>
+    <label class="check"><input type="checkbox" id="stages"> Inclure stages et alternances</label>
+  </div>
+
+  <div class="tabs" role="tablist" id="tabs"></div>
+
+  <div class="main">
+    <div class="list" id="list" aria-live="polite"></div>
+    <aside class="pane" id="pane" aria-label="Détail de l'offre"></aside>
+  </div>
+
+  <section class="elsewhere">
+    <h2>Chercher aussi ailleurs</h2>
+    <p>LinkedIn, Welcome to the Jungle et Indeed ne permettent pas la lecture automatique de leurs offres. Ces liens ouvrent des recherches déjà réglées sur ton profil et sur les dernières 24 heures. Les meilleures offres trouvées là sont ajoutées au radar lors de la mise à jour du matin.</p>
+    <div class="links" id="links"></div>
+  </section>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(() => {
+  const DATA = JSON.parse(document.getElementById("data").textContent);
+  const JOBS = DATA.offres || [];
+  const NOW = Date.now();
+  const DAY = 864e5;
+
+  // ---------- statut personnel (sauvegardée, postulée, masquée, note), gardé dans ce navigateur
+  const KEY = "radar.v1";
+  let store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { store = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} };
+  const st = id => (store.s && store.s[id]) || {};
+  const setSt = (id, patch) => { store.s = store.s || {}; store.s[id] = Object.assign({}, st(id), patch); save(); };
+
+  const prefs = Object.assign({ period: 7, zone: "all", sort: "score", stages: false, tab: "todo" }, store.p || {});
+  const keepPrefs = () => { store.p = prefs; save(); };
+  let quick = null;          // filtre rapide depuis les chiffres du haut
+  let current = null;
+  let limit = 60;
+
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const ageDays = j => Math.max(0, Math.floor((NOW - Date.parse(j.publie)) / DAY));
+  const isNew = j => NOW - Date.parse(j.publie) < 1.5 * DAY;
+  const tier = s => s >= 80 ? "tier-a" : s >= 62 ? "tier-b" : "";
+  const tierLabel = s => s >= 80 ? "Excellent match" : s >= 62 ? "Bon match" : "À regarder";
+  function rel(iso) {
+    const d = (NOW - Date.parse(iso)) / 36e5;
+    if (d < 1) return "il y a moins d'une heure";
+    if (d < 24) return `il y a ${Math.round(d)} h`;
+    const j = Math.floor(d / 24);
+    return j === 1 ? "hier" : `il y a ${j} j`;
+  }
+  const fmtDate = iso => new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+
+  // ---------- contrôles
+  const PERIODS = [[1, "24 h"], [3, "3 j"], [7, "7 j"], [30, "30 j"], [0, "Tout"]];
+  const ZONES = [["all", "Partout"], ["Paris", "Paris"], ["France", "France"], ["Europe", "Europe"], ["Afrique", "Afrique"], ["Amérique du Nord", "Amérique"], ["Télétravail", "Télétravail"]];
+  const SORTS = [["score", "Pertinence"], ["date", "Plus récentes"]];
+  function seg(el, items, key) {
+    el.innerHTML = items.map(([v, l]) => `<button type="button" data-v="${esc(v)}" aria-pressed="${String(prefs[key]) === String(v)}">${esc(l)}</button>`).join("");
+    el.onclick = e => {
+      const b = e.target.closest("button"); if (!b) return;
+      prefs[key] = typeof prefs[key] === "number" ? Number(b.dataset.v) : b.dataset.v;
+      el.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      keepPrefs(); limit = 60; render();
+    };
+  }
+  seg($("#period"), PERIODS, "period");
+  seg($("#zones"), ZONES, "zone");
+  seg($("#sort"), SORTS, "sort");
+  $("#stages").checked = prefs.stages;
+  $("#stages").onchange = e => { prefs.stages = e.target.checked; keepPrefs(); render(); };
+  $("#q").oninput = () => { limit = 60; render(); };
+
+  const TABS = [["todo", "À traiter"], ["saved", "Sauvegardées"], ["applied", "Postulées"], ["hidden", "Masquées"]];
+  function drawTabs(counts) {
+    $("#tabs").innerHTML = TABS.map(([v, l]) => `<button role="tab" type="button" data-v="${v}" aria-selected="${prefs.tab === v}">${l}<span class="c">${counts[v]}</span></button>`).join("");
+  }
+  $("#tabs").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    prefs.tab = b.dataset.v; quick = null; keepPrefs(); limit = 60; render();
+  };
+
+  // ---------- filtrage
+  function bucket(j) { const s = st(j.id).s; return s === "applied" ? "applied" : s === "hidden" ? "hidden" : s === "saved" ? "saved" : "todo"; }
+  function filtered() {
+    const q = $("#q").value.trim().toLowerCase();
+    let out = JOBS.filter(j => {
+      if (quick === "new") { if (!isNew(j)) return false; }
+      else if (quick === "top") { if (j.score < 80) return false; }
+      if (prefs.period && ageDays(j) > prefs.period && !quick) return false;
+      if (prefs.zone !== "all" && j.zone !== prefs.zone) return false;
+      if (!prefs.stages && j.stage) return false;
+      if (q && !`${j.titre} ${j.entreprise} ${j.lieu} ${j.zone} ${j.source || ""}`.toLowerCase().includes(q)) return false;
+      return true;
+    });
+    const counts = { todo: 0, saved: 0, applied: 0, hidden: 0 };
+    out.forEach(j => counts[bucket(j)]++);
+    // les sauvegardées restent aussi visibles dans « À traiter »
+    counts.todo += counts.saved;
+    out = out.filter(j => prefs.tab === "todo" ? ["todo", "saved"].includes(bucket(j)) : bucket(j) === prefs.tab);
+    out.sort(prefs.sort === "date" ? (a, b) => Date.parse(b.publie) - Date.parse(a.publie) || b.score - a.score : (a, b) => b.score - a.score || Date.parse(b.publie) - Date.parse(a.publie));
+    return { out, counts };
+  }
+
+  // ---------- rendu
+  function drawStats() {
+    const visible = JOBS.filter(j => (prefs.stages || !j.stage) && st(j.id).s !== "hidden");
+    const items = [
+      ["new", visible.filter(isNew).length, "nouvelles depuis hier"],
+      ["top", visible.filter(j => j.score >= 80).length, "excellents matchs"],
+      ["saved", JOBS.filter(j => st(j.id).s === "saved").length, "sauvegardées"],
+      ["applied", JOBS.filter(j => st(j.id).s === "applied").length, "candidatures envoyées"],
+    ];
+    const pressed = v => (v === "new" || v === "top") ? quick === v : (!quick && prefs.tab === v);
+    $("#stats").innerHTML = items.map(([v, n, l]) => `<button class="stat" type="button" data-v="${v}" aria-pressed="${pressed(v)}"><span class="n">${n}</span><span class="l">${l}</span></button>`).join("");
+  }
+  $("#stats").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const v = b.dataset.v;
+    if (v === "new" || v === "top") { quick = quick === v ? null : v; prefs.tab = "todo"; }
+    else { quick = null; prefs.tab = prefs.tab === v ? "todo" : v; }
+    keepPrefs(); limit = 60; render();
+  };
+
+  function rowHTML(j, i) {
+    const s = st(j.id).s;
+    const chips = [
+      isNew(j) ? `<span class="chip new">Nouveau</span>` : "",
+      `<span class="chip">${esc(j.zone)}</span>`,
+      j.stage ? `<span class="chip stage">${esc(j.contrat)}</span>` : "",
+      s === "saved" ? `<span class="chip st">Sauvegardée</span>` : s === "applied" ? `<span class="chip st">Postulée</span>` : "",
+    ].join("");
+    return `<button class="row ${s === "applied" ? "is-applied" : ""}" type="button" data-id="${j.id}" aria-current="${current === j.id}">
+      <span class="rank">${i + 1}</span>
+      <span class="score ${tier(j.score)}" title="${tierLabel(j.score)}"><b>${j.score}</b><i style="--w:${j.score}%"></i></span>
+      <span class="r-body">
+        <span class="r-title">${esc(j.titre)}</span>
+        <span class="r-meta"><span>${esc(j.entreprise)}</span><span>${esc(j.lieu || j.zone)}</span><span>${rel(j.publie)}</span></span>
+        <span class="chips">${chips}</span>
+      </span>
+    </button>`;
+  }
+
+  let lastList = [];
+  function render() {
+    const { out, counts } = filtered();
+    lastList = out;
+    drawTabs(counts);
+    drawStats();
+    const list = $("#list");
+    if (!out.length) {
+      const msg = prefs.tab === "applied" ? ["Aucune candidature pour l'instant", "Ouvre une offre puis clique sur « Postuler » : tu pourras la marquer comme envoyée."]
+        : prefs.tab === "saved" ? ["Aucune offre sauvegardée", "Clique sur « Sauvegarder » dans une offre pour la retrouver ici."]
+        : prefs.tab === "hidden" ? ["Aucune offre masquée", "Les offres que tu écartes arrivent ici. Tu peux les rétablir à tout moment."]
+        : ["Rien avec ces filtres", "Élargis la période ou la zone pour voir plus d'offres."];
+      list.innerHTML = `<div class="empty"><h3>${msg[0]}</h3><p>${msg[1]}</p>${prefs.tab === "todo" ? `<button class="btn" type="button" id="reset">Tout afficher</button>` : ""}</div>`;
+      const r = $("#reset"); if (r) r.onclick = () => { prefs.period = 0; prefs.zone = "all"; quick = null; $("#q").value = ""; seg($("#period"), PERIODS, "period"); seg($("#zones"), ZONES, "zone"); keepPrefs(); render(); };
+      drawPane(null);
+      return;
+    }
+    list.innerHTML = out.slice(0, limit).map(rowHTML).join("") +
+      (out.length > limit ? `<button class="btn more" type="button" id="more">Afficher ${Math.min(60, out.length - limit)} offres de plus</button>` : "");
+    const m = $("#more"); if (m) m.onclick = () => { limit += 60; render(); };
+    if (!out.some(j => j.id === current) && window.matchMedia("(min-width: 981px)").matches) current = out[0].id;
+    drawPane(JOBS.find(j => j.id === current) || null);
+  }
+
+  $("#list").onclick = e => {
+    const r = e.target.closest(".row"); if (!r) return;
+    select(r.dataset.id, true);
+  };
+  function select(id, open) {
+    current = id;
+    document.querySelectorAll(".row").forEach(r => r.setAttribute("aria-current", r.dataset.id === id));
+    drawPane(JOBS.find(j => j.id === id));
+    if (open) $("#pane").classList.add("open");
+    $("#pane").scrollTop = 0;
+  }
+
+  const ICON_OUT = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg>`;
+  let asking = null;
+  function drawPane(j) {
+    const pane = $("#pane");
+    if (!j) { pane.innerHTML = `<div class="pane-in"><div class="empty"><h3>Choisis une offre</h3><p>Le détail, les raisons du classement et le lien pour postuler s'affichent ici.</p></div></div>`; return; }
+    const s = st(j.id);
+    const neg = r => /stage|senior|peut-être/i.test(r);
+    pane.innerHTML = `<div class="pane-in">
+      <button class="btn close" type="button" id="close">← Retour à la liste</button>
+      <div>
+        <div class="p-kicker">
+          <span class="p-score ${tier(j.score)}"><b>${j.score}</b>/100</span>
+          <span>${tierLabel(j.score)}</span>
+          ${isNew(j) ? `<span class="chip new">Nouveau</span>` : ""}
+        </div>
+        <h2 style="margin-top:14px">${esc(j.titre)}</h2>
+        <p class="p-co"><b>${esc(j.entreprise)}</b> · ${esc(j.lieu || j.zone)}</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Contrat</dt><dd>${esc(j.contrat)}</dd></div>
+        <div><dt>Publié</dt><dd>${fmtDate(j.publie)} <span style="color:var(--faint)">(${rel(j.publie)})</span></dd></div>
+        <div><dt>Zone</dt><dd>${esc(j.zone)}${j.remote ? " · télétravail possible" : ""}</dd></div>
+        <div><dt>Source</dt><dd>${esc(j.source || j.outil || "Page carrières")}</dd></div>
+        ${j.salaire ? `<div><dt>Salaire</dt><dd>${esc(j.salaire)}</dd></div>` : ""}
+      </dl>
+      <div class="actions">
+        <a class="btn primary" id="apply" href="${esc(j.postuler || j.url)}" target="_blank" rel="noopener">${ICON_OUT} Postuler</a>
+        ${j.url && j.url !== j.postuler ? `<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">Voir l'offre</a>` : ""}
+        <button class="btn" type="button" data-act="saved" aria-pressed="${s.s === "saved"}">${s.s === "saved" ? "Sauvegardée" : "Sauvegarder"}</button>
+        <button class="btn" type="button" data-act="applied" aria-pressed="${s.s === "applied"}">${s.s === "applied" ? "Postulée" : "J'ai postulé"}</button>
+        <button class="btn" type="button" data-act="hidden" aria-pressed="${s.s === "hidden"}">${s.s === "hidden" ? "Rétablir" : "Masquer"}</button>
+      </div>
+      ${asking === j.id ? `<div class="ask"><span>Tu as envoyé ta candidature ?</span><button class="btn" type="button" data-ask="yes">Oui, la marquer postulée</button><button class="btn" type="button" data-ask="no">Pas encore</button></div>` : ""}
+      ${s.s === "applied" && s.t ? `<p style="margin:0;color:var(--muted);font-size:var(--step--1)">Candidature marquée le ${fmtDate(s.t)}.</p>` : ""}
+      <div class="p-sec"><h3>Pourquoi elle remonte</h3><ul class="why">${(j.raisons || []).map(r => `<li class="${neg(r) ? "neg" : ""}">${esc(r)}</li>`).join("")}</ul></div>
+      ${j.extrait ? `<div class="p-sec"><h3>Extrait de l'annonce</h3><p class="excerpt">${esc(j.extrait)}</p></div>` : ""}
+      <div class="p-sec"><h3>Mes notes</h3><textarea id="note-${j.id}" placeholder="Contact, date de relance, points à mettre en avant…">${esc(s.note || "")}</textarea></div>
+    </div>`;
+    pane.querySelector("#close").onclick = () => pane.classList.remove("open");
+    pane.querySelector("#apply").onclick = () => { if (s.s !== "applied") { asking = j.id; setTimeout(() => drawPane(j), 400); } };
+    pane.querySelectorAll("[data-act]").forEach(b => b.onclick = () => {
+      const a = b.dataset.act;
+      setSt(j.id, { s: st(j.id).s === a ? "" : a, t: new Date().toISOString() });
+      asking = null; render(); select(j.id, false);
+    });
+    pane.querySelectorAll("[data-ask]").forEach(b => b.onclick = () => {
+      if (b.dataset.ask === "yes") setSt(j.id, { s: "applied", t: new Date().toISOString() });
+      asking = null; render(); select(j.id, false);
+    });
+    const ta = pane.querySelector("textarea");
+    ta.oninput = () => setSt(j.id, { note: ta.value });
+  }
+
+  // ---------- clavier : j / k pour naviguer, p pour postuler, s pour sauvegarder, x pour masquer
+  document.addEventListener("keydown", e => {
+    if (e.target.matches("input, textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "/") { e.preventDefault(); $("#q").focus(); return; }
+    if (e.key === "Escape") { $("#pane").classList.remove("open"); return; }
+    const i = lastList.findIndex(j => j.id === current);
+    if (e.key === "j" || e.key === "ArrowDown") { e.preventDefault(); const n = lastList[Math.min(lastList.length - 1, i + 1)]; if (n) { select(n.id); document.querySelector(`.row[data-id="${n.id}"]`)?.scrollIntoView({ block: "nearest" }); } }
+    if (e.key === "k" || e.key === "ArrowUp") { e.preventDefault(); const n = lastList[Math.max(0, i - 1)]; if (n) { select(n.id); document.querySelector(`.row[data-id="${n.id}"]`)?.scrollIntoView({ block: "nearest" }); } }
+    if (e.key === "p") $("#apply")?.click();
+    if (e.key === "s") document.querySelector('[data-act="saved"]')?.click();
+    if (e.key === "x") document.querySelector('[data-act="hidden"]')?.click();
+  });
+
+  // ---------- en-tête, liens externes, pied de page
+  const upd = DATA.mis_a_jour;
+  $("#stamp").innerHTML = `<span>Mis à jour <b>${upd ? rel(upd) : "—"}</b></span><span class="mono">${JOBS.length} offres · ${DATA.nb_sources || 0} sources</span>`;
+
+  const enc = encodeURIComponent;
+  const L = [
+    ["LinkedIn", "Founder's Associate · Paris · 24 h", `https://www.linkedin.com/jobs/search/?keywords=${enc('"founder associate" OR "founder\'s associate" OR "chief of staff"')}&location=Paris&f_TPR=r86400`],
+    ["LinkedIn", "Strategy & Operations · Europe · 24 h", `https://www.linkedin.com/jobs/search/?keywords=${enc('"strategy & operations" OR bizops OR "strategy associate"')}&location=Europe&f_TPR=r86400`],
+    ["LinkedIn", "Strategy Consultant · Paris · 24 h", `https://www.linkedin.com/jobs/search/?keywords=${enc('"strategy consultant" OR "consultant en stratégie"')}&location=Paris&f_TPR=r86400`],
+    ["Welcome to the Jungle", "Founder's Associate · France", `https://www.welcometothejungle.com/fr/jobs?query=${enc("founder associate")}&refinementList%5Boffices.country_code%5D%5B%5D=FR&sortBy=mostRecent`],
+    ["Welcome to the Jungle", "Chief of Staff · France", `https://www.welcometothejungle.com/fr/jobs?query=${enc("chief of staff")}&refinementList%5Boffices.country_code%5D%5B%5D=FR&sortBy=mostRecent`],
+    ["Indeed", "Chief of Staff startup · Paris · 3 j", `https://fr.indeed.com/jobs?q=${enc("chief of staff startup")}&l=Paris&fromage=3`],
+    ["Station F", "Associate · startups du campus", `https://jobs.stationf.co/search?query=${enc("associate")}`],
+    ["APEC", "Chargé de mission stratégie · cadres", `https://www.apec.fr/candidat/recherche-emploi.html/emploi?motsCles=${enc("chargé de mission stratégie")}`],
+    ["LinkedIn", "Strategy · Dakar / Abidjan / Casablanca", `https://www.linkedin.com/jobs/search/?keywords=${enc("strategy OR \"chief of staff\" OR associate")}&location=Africa&f_TPR=r604800`],
+    ["LinkedIn", "Francophone · États-Unis", `https://www.linkedin.com/jobs/search/?keywords=${enc('(strategy OR "chief of staff") AND French')}&location=United%20States&f_TPR=r604800`],
+  ];
+  $("#links").innerHTML = L.map(([b, s, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener"><b>${esc(b)}</b><span>${esc(s)}</span></a>`).join("");
+
+  $("#foot").innerHTML = `Classement calculé d'après ton profil (intitulé, lieu, type d'entreprise, langue, fraîcheur). Tes statuts et notes restent dans ce navigateur. Raccourcis : <span class="kbd">j</span> <span class="kbd">k</span> naviguer, <span class="kbd">p</span> postuler, <span class="kbd">s</span> sauvegarder, <span class="kbd">x</span> masquer, <span class="kbd">/</span> rechercher.`;
+
+  render();
+})();
+</script>
