@@ -5,14 +5,16 @@ Site personnel d'Elliot Dumas : il rassemble et classe les offres d'emploi qui c
 startups en priorité ; Paris, Europe, Afrique ; Amérique du Nord seulement si le poste demande le français).
 Le profil et les mots-clés sont dans `profil.json`. Réponds à Elliot en français.
 
-Page publiée (privée) : https://claude.ai/artifact/NGBzQrBbixKfbv8ryr7he2
+Pages publiées :
+- GitHub Pages : `docs/index.html`, mis à jour à chaque push sur main (https://elliotdumas.github.io/application-website-/)
+- claude.ai (privée) : https://claude.ai/artifact/NGBzQrBbixKfbv8ryr7he2
 
 ## Organisation
 
 - `scripts/sources.json` : pages carrières publiques suivies (Ashby, Lever, Greenhouse, Recruitee, Workable).
 - `scripts/fetch_jobs.py` : récupère, filtre, classe et écrit `data/jobs.json`. `data/seen.json` garde la date de première apparition.
 - `data/extra.json` : offres trouvées par recherche web (LinkedIn, Welcome to the Jungle, Indeed, cabinets de conseil…). Le format est décrit dans le fichier.
-- `web/radar.html` : la page. `scripts/build.py` y insère les données et produit `dist/radar.html`, le fichier publié.
+- `web/radar.html` : la page. `scripts/build.py` y insère les données et produit `dist/radar.html` (publié sur claude.ai) et `docs/index.html` (GitHub Pages).
 - `inspiration/` et `images/` : fichiers déposés par Elliot. Regarde-les au début d'une session.
 
 ## Mise à jour quotidienne
