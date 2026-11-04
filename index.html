@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon site</title>
+  <meta name="description" content="Description de mon site">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#">Mon site</a>
+    <nav>
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Bienvenue</h1>
+      <p>Une phrase d'accroche qui dit en quelques mots ce que propose ce site.</p>
+      <a class="btn" href="#contact">Me contacter</a>
+    </section>
+
+    <section id="apropos">
+      <h2>À propos</h2>
+      <p>Présente-toi ou présente ton projet ici.</p>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="cards">
+        <article class="card"><h3>Service 1</h3><p>Courte description.</p></article>
+        <article class="card"><h3>Service 2</h3><p>Courte description.</p></article>
+        <article class="card"><h3>Service 3</h3><p>Courte description.</p></article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Écris-moi à <a href="mailto:contact@exemple.fr">contact@exemple.fr</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="annee"></span> Mon site</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
